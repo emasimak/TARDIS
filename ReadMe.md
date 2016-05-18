@@ -2,10 +2,12 @@
 
 ## General
 The interaction of an ion beam with a foil or gas stripper is known to affect its charge state distribution. 
+
 **TARDIS** has been developed for the purpose of calculating the distribution of the expected charge states after such a stripping point and aims to aid with optimal charge selection in relevant studies.
 
 ## Input Parameters
 As input to the program the user can define the following:
+
 1. The bean characteristics:
  * the ion atomic number Z,  
  * the respective mass, m, (in amu), 
