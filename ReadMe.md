@@ -50,7 +50,6 @@ The formulas that are used in the program:
 ## Development Info
 * Program developed by E. M. Asimakopoulou [Contact: emasi@kth.se]
 * This program has been developed as part of the APAPES experiment 
-	- Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete 
-	  [Contact: tzouros@physics.uoc.gr], 
-	- http://apapes.physics.uoc.gr/
+ * Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete [Contact: tzouros@physics.uoc.gr],
+ * http://apapes.physics.uoc.gr/
 * Based on "Charge", program by Justin M. Sanders [Fortran] .
