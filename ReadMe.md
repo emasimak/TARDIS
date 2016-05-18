@@ -1,6 +1,6 @@
-# Charge States
+# TARDIS
 
-**Charge States** has been implemented to calculate the expected charge states produced once an ion beam passes through a stripping point and aid with optimal charge selection.
+**TARDIS** has been implemented to calculate the expected charge states produced once an ion beam passes through a stripping point and aid with optimal charge selection.
 The stripping medium can be either gas or carbon foil.
 The Z (ion atomic number), m (mass in amu), E (beam energy in MeV) and the initial ionization parameters of the beam, as well as a multiplication factor, need to be specified.
 
