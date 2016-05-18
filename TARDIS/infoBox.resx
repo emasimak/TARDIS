@@ -118,43 +118,55 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="richTextBox1.Text" xml:space="preserve">
-    <value>The interaction of an ion beam with a foil or gas stripper is known to affect its charge state distribution. 
-The present program has been developed for the purpose of calculating the distribution of the expected charge states after such a stripping point and aims to aid with optimal charge selection in studies.
+    <value>-- General --
+The interaction of an ion beam with a foil or gas stripper is known to affect its charge state distribution. 
+TARDIS has been developed for the purpose of calculating the distribution of the expected charge states after such a stripping point and aims to aid with optimal charge selection in relevant studies.
 
-The stripping medium can be chosen to be either gas or foil.
-The Z (ion atomic number), m (mass in amu), E (beam energy in MeV) and the initial ionization parameters of the beam, as well as a multiplication factor,  are specified as input parameters.
+-- Input Parameters --
+As input to the program the user can define the following:
+1. The bean characteristics:
+    * the ion atomic number Z,  
+    * the respective mass, m, (in amu), 
+    * the beam energy, E, (in MeV),
+    * the initial ionization parameters of the beam,
+    * a multiplication factor for the result representaion. 
+2. The stripping medium characteristics 
+    * material type (gas or foil) and 
+    * the atomic number Z of the material 
 
-The predictions are made with use of empirical formulas that follow the assumption that the charge state distribution can be approximated with a Gaussian distribution.
-The formulas predict the mean charge state q_0 produced and the respective width d of the distribution around that most probable value.
+-- Formulas --
+The predictions are made with use of empirical formulas that follow the assumption that the charge state distribution can be approximated with a Gaussian distribution. Under this assumption, the mean charge state q_0 as well as the width d of the charge state distribution after stripping are calculated.
+The formulas that are used in the program are: 
+   * the Nikolaev - Dmitriev formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
+   * Sayer's formula (Gas and Foil stripping) - appropriate for heavier elements
+   * Betz's formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
+   * Schiwietz - Schmitt formula (Gas and Foil stripping) - appropriate for elements between He - C. For the calculation of the qmean value Schiwietz's formulas for gas and foil stripping are used, while for the width calculation Schmitt's formula is used.
 
-The formulas used are as mentioned below:
- 	- Nikolaev - Dmitriev formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
-	- Sayer's formula (Gas and Foil stripping) - appropriate for heavier elements
-	- Betz's formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
-	- Schiwietz - Schmitt (Gas and Foil stripping) - appropriate for elements between He - C. For the calculation of the qmean value 
-	   Schiwietz's formulas for gas and foil stripping are used, while for the width calculation Schmitt's formula is used.
+-- Features --
+1. The empirical formulas used in the code are available for download from the program.
+2. The outputs of the expected charge states calculations are presented in table format, which can be exported in Excel format (requires Microsoft Excel).
+3. A graphical representation of the expected charge states distribution after the stripping poing is also generated and can be downloaded as .png file.
 
-and the respective expressions are available for download in the program.
-Using the formulas the respective calculations are carried out and are presented in table form. The table can be exported in Excel format but that requires Microsoft Excel.
+-- Notes: -- 
+   * In the case that a formula doesn't support a combination of element and Energy values an error message appears on the respective table slot.
+   * The Schiwietz - Schmitt predictions are presented for 2 &lt; z &lt; 6 values, where it derives best results.
+   * If an error of "Missing assembly reference" occurs, go to 
+ 	Solution Explorer&gt;Right-Click References&gt;Add Reference...&gt;Browse...&gt;OxyPlot-2014.1.240.1\NET45\&gt;Select all .dll&gt;Add 
 
-A graphical representation of the expected charge state distribution after the stripping poing is also generated and can be downloaded as .png file.
+-- Bibliography --
+Fits from: 
+    - V. S. Nikolaev and I. S. Dmitriev, 1968,  “On the equilibrium charge distribution in heavy element ion beams”, Physics Letters, vol. 28A, pp. 277-278
+    - H. D. Betz, 1983, “Heavy- ion charge states”, Academic Press, Applied Atomic Collision Physics (S. Datz, ed.), p. 1
+    - RO Sayer, 1977, "Semi-empirical formulas for heavy-ion stripping data", Rev. de Phys. App. 12 (1543)
+    - G. Schiwietz and P. L. Grande, 2001, "Improved Charge - State Formulas", Elsevier, Nuclear Instruments and Methods in Physics Research B 175 - 177, 125 - 131
+    - C. J. Schmitt, 2010, "Equilibrium charge state distribution of low- z ions incident on thin self- supporting foils", [PhD] Dissertation, Notre Dame, Indiana.
 
-Notes: 
-	- In the case that a formula doesn't support a combination of element and Energy values an error message will appear on the 
-	   respective table slot.
-	- The Schiwietz - Schmitt predictions are presented for 2 &lt; z &lt; 6 values, where it derives best results.
-
+-- Development Info --
 * Program developed by E. M. Asimakopoulou [Contact: emasi@kth.se]
 * This program has been developed as part of the APAPES experiment 
-	- Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete [Contact: tzouros@physics.uoc.gr], 
-	- http://apapes.physics.uoc.gr/
-* Based on "Charge", program by Justin M. Sanders [Fortran] .
-* Fits from: 
-	- V. S. Nikolaev and I. S. Dmitriev, 1968,  “On the equilibrium charge distribution in heavy element ion beams”, Physics Letters, vol. 28A, pp. 277-278
-	- H. D. Betz, 1983, “Heavy- ion charge states”, Academic Press, Applied Atomic Collision Physics (S. Datz, ed.), p. 1
-	- RO Sayer, 1977, "Semi-empirical formulas for heavy-ion stripping data", Rev. de Phys. App. 12 (1543)
-	- G. Schiwietz and P. L. Grande, 2001, "Improved Charge - State Formulas", Elsevier, Nuclear Instruments and Methods in Physics Research B 175 - 177, 125 - 131
-	- C. J. Schmitt, 2010, "Equilibrium charge state distribution of low- z ions incident on thin self- supporting foils", [PhD] Dissertation, Notre Dame, Indiana.</value>
+    * Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete [Contact: tzouros@physics.uoc.gr],
+    * http://apapes.physics.uoc.gr/
+* Based on "Charge", program by Justin M. Sanders [Fortran] .</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
