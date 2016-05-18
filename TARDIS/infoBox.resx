@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>The present program is designed to calculate the expected charge states produced once an ion beam passes through a stripping point and aid with optimal charge selection.
+The stripping medium can be either gas or carbon foil.
+The Z (ion atomic number), m (mass in amu), E (beam energy in MeV) and the initial ionization parameters of the beam, as well as a multiplication factor,  are specified.
+
+The predictions are made with use of empirical formulas that follow the assumption that the charge state distribution can be approximated with a Gaussian distribution.
+Therefore they aim  to predict the probable charge state q_0 produced and the width d of the charge state distribution after stripping.
+
+The formulas used to calculate the mean charge state and the width of the charge state distribution are the one mentioned below:
+ 	- Nikolaev - Dmitriev formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
+	- Sayer's formula (Gas and Foil stripping) - appropriate for heavier elements
+	- Betz's formula (Foil stripping) - one of the best formulas for Carbon stripper foils, medium/high Z and few MeV/A
+	- Schiwietz - Schmitt (Gas and Foil stripping) - appropriate for elements between He - C. For the calculation of the qmean value 
+	   Schiwietz's formulas for gas and foil stripping are used, while for the width calculation Schmitt's formula is used.
+
+The formulas are available for export below.
+
+Notes: 
+	- In the case that a formula doesn't support a combination of element and Energy values an error message will appear on the 
+	   respective table slot.
+	- The Schiwietz - Schmitt predictions are presented for 2 &lt; z &lt; 6 values, where it derives best results.
+
+* Program developed by E. M. Asimakopoulou [Contact: emasi@kth.se]
+* This program has been developed as part of the APAPES experiment 
+	- Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete [Contact: tzouros@physics.uoc.gr], 
+	- http://apapes.physics.uoc.gr/
+* Based on "Charge", program by Justin M. Sanders [Fortran] .
+* Fits from: 
+	- V. S. Nikolaev and I. S. Dmitriev, 1968,  “On the equilibrium charge distribution in heavy element ion beams”, Physics Letters, vol. 28A, pp. 277-278
+	- H. D. Betz, 1983, “Heavy- ion charge states”, Academic Press, Applied Atomic Collision Physics (S. Datz, ed.), p. 1
+	- RO Sayer, 1977, "Semi-empirical formulas for heavy-ion stripping data", Rev. de Phys. App. 12 (1543)
+	- G. Schiwietz and P. L. Grande, 2001, "Improved Charge - State Formulas", Elsevier, Nuclear Instruments and Methods in Physics Research B 175 - 177, 125 - 131
+	- C. J. Schmitt, 2010, "Equilibrium charge state distribution of low- z ions incident on thin self- supporting foils", [PhD] Dissertation, Notre Dame, Indiana.</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAQAUAAAAAAAAAAAAAAAEAAAAB
+        AAD8/PwA4ffqAKf2xwCC9rEAcvioAP///wD6/fsAqPfIAG/9qABv/6kA+fz7AJH4uwCS+LsA+vz7AG7+
+        qABZ45EAQ8p5AELJeABX4I4A4/nsAGn3ogAsrmAAEZJEABGTRQAnqVsAZvOfAKn4yQAlp1kAbv2nAIT4
+        swAQj0MACXMzAAhyMwAPjUIAUtuJAEPJeQADXigACG8xADzBcQBCyHgACHEzAAdtMAA7wHAAcfioAIP4
+        swBW4I4AD4tBAE/XhgAholUAbfumACWmWQBj75sAp/fHAG39pwBR2ogAO8BxADrAcAD5/fsAkfi6AAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAECAwQEAwIBAAAAAAUFBgcICQkJCQkJCAcGBQAFCgsJCQkJCQkJCQkJDA0ABQcJCQkO
+        DxAREg4JCQkHABMICQkUFRYXFxcYGQkJCAEaCQkOFRcXFxcXFxscCQkCHQkJDxYXHh8gIRcXIgkJAwQJ
+        CSMXFx8kJCUXFyYJCQQECQknFxcoJCQpFxcqCQkrLAkJLRcXISUpLhcXLwkJAxoJCQ4YFxcXFxcXMDEJ
+        CQITCAkJGTIXFxcXMDMJCQgBBTQJCQk1Njc4LzEJCQkHAAU5OgkJCQkJCQkJCQkLOQAFBTk0CAkJCQkJ
+        CQgHCgUABQUFBRMaLAQEHRoTBQUFAAAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
+        //8AAP//AAD//wAA//8AAP//AAD//wAA//8=
+</value>
+  </data>
+</root>

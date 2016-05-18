@@ -1,0 +1,33 @@
+ SUBROUTINE FOIL(E,IZ,IA,A,SUM,KK,XQ)
+
+C where: 	E = energy of beam ?
+C		IZ = atomic number of ion
+C		IA = 
+C		A = array, diam: 10
+C		SUM = 
+C		KK = 80 ?
+C		XQ = 
+
+C     R.O.SAYER, OAK RIDGE NAT.LAB., OAK RIDGE, TENNESSEE 37830, 1977
+C     VALID FOR 100 >= Z >=16, AND 0.15<= QM:Z <=0.95
+
+      DIMENSION A(100)
+      DOUBLE PRECISION QM,D2,A,SUM,E,XQ
+
+      V=1.39*SQRT(E/IA)									where is V defined?
+      BE=V/29.979									where is BE defined?
+      DZ = iz										
+      R=0.0007*IZ-0.7*BE
+      d38 = DZ**(-0.38)
+      b86 = BE**0.86
+      QM=DZ*(1.-1.03*EXP(-47.3*D38*B86))
+      XQ=QM/DZ
+600   IF(XQ.GE.0.15.AND.XQ.LE.0.95)XQ=-1.0
+      q26 = ((QM/dZ)*(1.-QM/dZ))**0.26
+660   D2=(0.47*dZ**0.46*q26)**2
+      SUM=0
+      DO 666 K=1,IZ									calculate the SUM from K=1 until K = IZ with step = 1 --- (?)
+      A(K)=EXP(-((K-QM)**2)/(2.*D2*(1.+R*(K-QM))))
+666   SUM=SUM+A(K)
+      RETURN
+      END
