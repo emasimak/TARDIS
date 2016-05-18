@@ -6,15 +6,15 @@ The interaction of an ion beam with a foil or gas stripper is known to affect it
 
 ## Input Parameters
 As input to the program the user can define the following:
-1. The bean characteristics: 1
-	* the ion atomic number Z, 1a 
-	* the respective mass, m, (in amu), 1b 
-	* the beam energy, E, (in MeV), 1c
-	* the initial ionization parameters of the beam, 1d
-	* a multiplication factor for the result representaion. 1e
-2. The stripping medium characteristics 2
-	* material type (gas or foil) and 2a 
-	* the atomic number Z of the material 2b
+1. The bean characteristics:
+ * the ion atomic number Z,  
+ * the respective mass, m, (in amu), 
+ * the beam energy, E, (in MeV),
+ * the initial ionization parameters of the beam,
+ * a multiplication factor for the result representaion. 
+2. The stripping medium characteristics 
+ * material type (gas or foil) and 
+ * the atomic number Z of the material 
 
 ## Formulas
 The predictions are made with use of empirical formulas that follow the assumption that the charge state distribution can be approximated with a Gaussian distribution. Under this assumption, the mean charge state q_0 as well as the width d of the charge state distribution after stripping are calculated.
