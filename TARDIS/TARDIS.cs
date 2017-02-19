@@ -331,7 +331,7 @@ namespace Charge_States
             double inv_k = 1/k;
             double inv_k2 = 1/k2;
             double v_prim = 3.6 * Math.Pow(10, 8);
-            double qmean_nd = z * Math.Pow((1.0 + (Math.Pow(Math.Pow(z, -0.45) * (u * 100 / v_prim), inv_k))), k); // Calculating most probable charge state - Nikolaev - Dmitriev formula.
+            double qmean_nd = z * Math.Pow((1.0 + (Math.Pow(Math.Pow(z, alpha) * (u * 100 / v_prim), inv_k))), k); // Calculating most probable charge state - Nikolaev - Dmitriev formula.
             double d_nd = 0.5 * Math.Sqrt(qmean_nd * (1.0 - Math.Pow(qmean_nd / z, inv_k2))); // Calculating width d - Nikolaev - Dmitriev formula.
 
             return new Tuple<double, double>(qmean_nd, d_nd);
