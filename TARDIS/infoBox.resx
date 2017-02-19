@@ -149,7 +149,7 @@ The formulas that are used in the program are:
 
 -- Notes: -- 
    * In the case that a formula doesn't support a combination of element and Energy values an error message appears on the respective table slot.
-   * The Schiwietz - Schmitt predictions are presented for 2 &lt; z &lt; 6 values, where it derives best results.
+   * The Schiwietz - Schmitt predictions are only presented for 2 &lt; z &lt; 6 values, where it derives best results.
    * If an error of "Missing assembly reference" occurs, go to 
  	Solution Explorer&gt;Right-Click References&gt;Add Reference...&gt;Browse...&gt;OxyPlot-2014.1.240.1\NET45\&gt;Select all .dll&gt;Add 
 

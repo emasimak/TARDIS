@@ -145,7 +145,7 @@ namespace Charge_States
                     double gauss_s_foil = gaussian_fit_s(q, qmean_s_foil, rc, epc);
                     double gauss_b = gaussian_fit_b_ss(q, qmean_b, d_b);
                     double gauss_ss_foil = 0.0;
-                    if (z < 6)
+                    if (z_t_foil < 6)
                     {
                         gauss_ss_foil = gaussian_fit_b_ss(q, qmean_ss_foil, d_ss);
                     }
@@ -162,7 +162,7 @@ namespace Charge_States
                 {
                     double gauss_s_gas = gaussian_fit_s(q, qmean_s_gas, rg, epg);
                     double gauss_ss_gas = 0.0;
-                    if (z < 6)
+                    if (z_t_gas < 6)
                     {
                         gauss_ss_gas = gaussian_fit_b_ss(q, qmean_ss_gas, d_ss);
                     }
@@ -324,9 +324,15 @@ namespace Charge_States
             // double d_nd = 0.5 * Math.Sqrt(qmean_nd * (1.0 - Math.Pow(qmean_nd / z, 1.667))); // Calculating width d - Nikolaev - Dmitriev formula.
 
             // Formulas according to Justin M. Sanders' Fortran program.
+            // Parameters: alpha, k, v_prim from Betz, Eqn 3.7.5
+            double alpha = -0.45;
+            double k = -0.61;
+            double k2 = 0.6;
+            double inv_k = 1/k;
+            double inv_k2 = 1/k2;
             double v_prim = 3.6 * Math.Pow(10, 8);
-            double qmean_nd = z * Math.Pow((1.0 + (Math.Pow(Math.Pow(z, -0.45) * (u * 100 / v_prim), -1.64))), -0.6); // Calculating most probable charge state - Nikolaev - Dmitriev formula.
-            double d_nd = 0.5 * Math.Sqrt(qmean_nd * (1.0 - Math.Pow(qmean_nd / z, 1.667))); // Calculating width d - Nikolaev - Dmitriev formula.
+            double qmean_nd = z * Math.Pow((1.0 + (Math.Pow(Math.Pow(z, -0.45) * (u * 100 / v_prim), inv_k))), k); // Calculating most probable charge state - Nikolaev - Dmitriev formula.
+            double d_nd = 0.5 * Math.Sqrt(qmean_nd * (1.0 - Math.Pow(qmean_nd / z, inv_k2))); // Calculating width d - Nikolaev - Dmitriev formula.
 
             return new Tuple<double, double>(qmean_nd, d_nd);
         }
@@ -674,23 +680,26 @@ namespace Charge_States
 
         public double gaussian_fit_nd(double q, double qmean, double d) // Function responisble for the Gaussian distribution of the values of the Nikolaev - Dmitriev formula. 
         {
+            double c_norm = 1 / (Math.Sqrt(2 * Math.PI));
             double calc = new double();
             // Gaussian Distribution as discribed in Justin M. Sanders' program.
-            return calc = 0.398942 * Math.Exp(-Math.Pow((q - qmean) / d, 2) / 2) / d;
+            return calc = c_norm * Math.Exp(-Math.Pow((q - qmean) / d, 2) / 2) / d;
         }
 
         public double gaussian_fit_s(double q, double qmean, double r, double ep) // Function responisble for the Gaussian distribution of the values of the Sayer formula. 
         {
+            double c_norm = 1 / (Math.Sqrt(2 * Math.PI));
             double calc = new double();
             // Gaussian Distribution as discribed in Justin M. Sanders' program.
-            return calc = 0.398942 * Math.Exp(-0.5 * Math.Pow((q - qmean) / r, 2) / (1 + (ep * (q - qmean) / r))) / r;
+            return calc = c_norm * Math.Exp(-0.5 * Math.Pow((q - qmean) / r, 2) / (1 + (ep * (q - qmean) / r))) / r;
         }
 
         public double gaussian_fit_b_ss(double q, double qmean, double d) // Function responisble for the Gaussian distribution of the values of the Betz and the Schiwietz - Schmitt formulas. 
         {
+            double c_norm = 1 / (Math.Sqrt(2 * Math.PI));
             double calc = new double();
             // General Gaussian Distribution.
-            return calc = (1.0 / (d * Math.Sqrt(2.0 * Math.PI))) * Math.Exp(-(Math.Pow(q - qmean, 2.0)) / (2.0 * Math.Pow(d, 2.0)));
+            return calc = c_norm * Math.Exp(-(Math.Pow(q - qmean, 2.0)) / (2.0 * Math.Pow(d, 2.0))) / d;
         }
 
         //
@@ -766,8 +775,12 @@ namespace Charge_States
             dataGridView1.Columns.Clear();
             dataGridView1.Rows.Clear();
 
+            bool Schiwietz_Schmitt_isValid = true;
+            string notificationText = "Formula not used for this target.";
+
             if (foilStripperButton.Checked)     // Foil stripper selected
             {
+                if (z_t_foil >= 6) Schiwietz_Schmitt_isValid = false; // Formula for Be - C
                 dataGridView1.ColumnCount = 9;
                 dataGridView1.Columns[0].Name = "Charge (q)";
                 dataGridView1.Columns[1].Name = "F(q) [Nikolaev - Dmitriev formula]"; //"F(q) [Foil Stripper, Nikolaev - Dmitriev formula]";
@@ -781,6 +794,7 @@ namespace Charge_States
             }
             else    // Gas stripper selected
             {
+                if (z_t_gas >= 6) Schiwietz_Schmitt_isValid = false; // Formula for Be - C
                 dataGridView1.ColumnCount = 5;
                 dataGridView1.Columns[0].Name = "Charge (q)";
                 dataGridView1.Columns[1].Name = "[F(q) [Sayer Formula]";
@@ -794,7 +808,26 @@ namespace Charge_States
                 for (int j = 0; j < list[i].Count; j++)
                 {
                     DataGridViewCell cell = new DataGridViewTextBoxCell();
-                    cell.Value = j == 0 ? list[i][j].ToString() : list[i][j].ToString("G3"); // Defining the precision of the displayed values to the 3rd decimal digit.
+                    if (j == 0)
+                    {
+                        cell.Value = list[i][j].ToString();
+                    }
+                    else if ((j == list[i].Count - 1) || (j == list[i].Count - 2))
+                    {
+                        if (Schiwietz_Schmitt_isValid)
+                        {
+                            cell.Value = list[i][j].ToString("G3"); // Defining the precision of the displayed values to the 3rd decimal digit.
+                        }
+                        else
+                        {
+                            cell.Value = notificationText;
+                        }
+                    }
+                    else
+                    {
+                        cell.Value = list[i][j].ToString("G3"); // Defining the precision of the displayed values to the 3rd decimal digit.
+                    }
+                    
                     row.Cells.Add(cell);
                 }
                 dataGridView1.Rows.Insert(i, row);
@@ -816,6 +849,7 @@ namespace Charge_States
             {
                 plotModel1.Title = string.Format("Charge State Predictions (Gas Stripper, Z = {0}).", z_t_gas.ToString());
             }
+            
             // Each formula is represented with a unique color.
             // The predictions of each formula for each Z value is plotted as a node (Scatter Series).
             // The general Gaussian disrtibution of the predictions of each formula is plotted with a continuous line (Line Series).
@@ -893,7 +927,7 @@ namespace Charge_States
                     scatterSeries1.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][1])); // Nikolaev - Dmitriev Formula
                     scatterSeries2.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][3])); // Sayer Formula (foil)
                     scatterSeries3.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][5])); // Betz Formula
-                    if (z < 6)  // Schiwietz - Schmitt Formula (foil) - best results for 2 < z < 6 values
+                    if (z_t_foil < 6)  // Schiwietz - Schmitt Formula (foil) - best results for 2 < z < 6 values
                     {
                         scatterSeries4.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][7]));
                     }                    
@@ -928,7 +962,7 @@ namespace Charge_States
                     lineSeries1.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_nd));
                     lineSeries2.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_s_foil));
                     lineSeries3.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_b));
-                    if (z < 6)
+                    if (z_t_foil < 6)
                     {
                         lineSeries4.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_ss_foil));
                     }                    
@@ -938,6 +972,7 @@ namespace Charge_States
                 linearAxis1.Maximum = z + (1.0); //Setting the x axis maximum at (z+1)
                 linearAxis1.Minimum = 1.0;
                 linearAxis1.Position = AxisPosition.Bottom;
+                linearAxis1.Title = "q";
                 plotModel1.Axes.Add(linearAxis1);
 
                 var linearAxis2 = new LinearAxis();
@@ -986,7 +1021,7 @@ namespace Charge_States
                 for (int i = 0; i < z; i++) // Adding the data points to each data scatter series.
                 {
                     scatterSeries5.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][1])); // Sayer Formula (gas)
-                    if (z < 6)  // Schiwietz - Schmitt Formula (gas) - best results for 2 < z < 6 values.
+                    if (z_t_gas < 6)  // Schiwietz - Schmitt Formula (gas) - best results for 2 < z < 6 values.
                     {
                         scatterSeries6.Points.Add(new OxyPlot.DataPoint(data_list[i][0], data_list[i][3]));
                     }
@@ -1008,7 +1043,7 @@ namespace Charge_States
                         y_axis_maximum = dataPoint_ss_gas;
                     }
                     lineSeries5.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_s_gas));
-                    if (z < 6)
+                    if (z_t_gas < 6)
                     {
                         lineSeries6.Points.Add(new OxyPlot.DataPoint(j + 1.0, dataPoint_ss_gas));
                     }
@@ -1078,3 +1113,4 @@ namespace Charge_States
         }
     }
 }
+ 
