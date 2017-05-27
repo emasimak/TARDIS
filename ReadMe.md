@@ -48,7 +48,7 @@ The formulas that are used in the program:
 	- C. J. Schmitt, 2010, "Equilibrium charge state distribution of low- z ions incident on thin self- supporting foils", [PhD] Dissertation, Notre Dame, Indiana.
 
 ## Development Info
-* Program developed by E. M. Asimakopoulou [Contact: emasimak@gmail.se]
+* Program developed by E. M. Asimakopoulou [Contact: emasimak@gmail.com]
 * This program has been developed as part of the APAPES experiment 
  * Project Coordinator: Prof. Theo J.M. Zouros, Dept. of Physics, University of Crete [Contact: tzouros@physics.uoc.gr],
  * http://apapes.physics.uoc.gr/
